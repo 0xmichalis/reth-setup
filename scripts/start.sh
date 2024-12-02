@@ -83,6 +83,7 @@ if ! podman ps --filter "name=${CONTAINER_NAME_LIGHTHOUSE}" --filter "status=run
       --execution-endpoint http://reth:8551 \
       --metrics --metrics-address 0.0.0.0 \
       --execution-jwt /root/jwt/jwt.hex \
+      --log-color \
       --checkpoint-sync-url https://mainnet.checkpoint.sigp.io
 else
   echo "Container ${CONTAINER_NAME_LIGHTHOUSE} is already running."
