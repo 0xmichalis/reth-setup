@@ -76,7 +76,7 @@ if ! podman ps --filter "name=${CONTAINER_NAME_LIGHTHOUSE}" --filter "status=run
       --name ${CONTAINER_NAME_LIGHTHOUSE} \
       --network ${NETWORK_NAME} \
       -d \
-      sigp/lighthouse:v5.3.0 \
+      sigp/lighthouse:v6.0.0 \
       lighthouse bn \
       --network mainnet \
       --http --http-address 0.0.0.0 \
