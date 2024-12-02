@@ -13,7 +13,7 @@ Environment=PODMAN_SYSTEMD_UNIT=%n
 Restart=on-failure
 TimeoutStopSec=70
 ExecStartPre=/bin/rm -f %t/container-reth.pid %t/container-reth.ctr-id
-ExecStart=/usr/bin/podman run --conmon-pidfile %t/container-reth.pid --cidfile %t/container-reth.ctr-id --cgroups=no-conmon --replace -v rethdata:/root/.local/share/reth/mainnet -v rethlogs:/root/logs -v /home/michalis/reth/etc/jwttoken:/root/jwt:ro -p 9001:9001 -p 30303:30303 -p 30303:30303/udp -p 8545:8545 -p 8551:8551 --pid=host --name reth --network ethnetwork -d ghcr.io/paradigmxyz/reth node --full --chain=mainnet --metrics 0.0.0.0:9001 --log.file.directory /root/logs --authrpc.addr 0.0.0.0 --authrpc.port 8551 --authrpc.jwtsecret /root/jwt/jwt.hex --http --http.addr 0.0.0.0 --http.port 8545 --http.api eth,net,web3
+ExecStart=/usr/bin/podman run --conmon-pidfile %t/container-reth.pid --cidfile %t/container-reth.ctr-id --cgroups=no-conmon --replace -v rethdata:/root/.local/share/reth/mainnet -v rethlogs:/root/logs -v /home/michalis/reth-scaffolding/scripts/jwttoken:/root/jwt:ro -p 9001:9001 -p 30303:30303 -p 30303:30303/udp -p 8545:8545 -p 8551:8551 --pid=host --name reth --network ethnetwork -d ghcr.io/paradigmxyz/reth node --full --chain=mainnet --metrics 0.0.0.0:9001 --log.file.directory /root/logs --authrpc.addr 0.0.0.0 --authrpc.port 8551 --authrpc.jwtsecret /root/jwt/jwt.hex --http --http.addr 0.0.0.0 --http.port 8545 --http.api eth,net,web3
 ExecStop=/usr/bin/podman stop --ignore --cidfile %t/container-reth.ctr-id -t 10
 ExecStopPost=/usr/bin/podman rm --ignore -f --cidfile %t/container-reth.ctr-id
 PIDFile=%t/container-reth.pid
