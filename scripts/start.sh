@@ -36,7 +36,7 @@ if ! podman ps --filter "name=${CONTAINER_NAME_RETH}" --filter "status=running" 
       -v rethdata:/root/.local/share/reth/mainnet \
       -v rethlogs:/root/logs \
       -v ${JWT_DIR}:/root/jwt:ro \
-      -p 9001:9001 \
+      -p 9011:9011 \
       -p 30303:30303 \
       -p 30303:30303/udp \
       -p 8545:8545 \
@@ -49,7 +49,7 @@ if ! podman ps --filter "name=${CONTAINER_NAME_RETH}" --filter "status=running" 
       node \
       --full \
       --chain=mainnet \
-      --metrics 0.0.0.0:9001 \
+      --metrics 0.0.0.0:9011 \
       --log.file.directory /root/logs \
       --authrpc.addr 0.0.0.0 \
       --authrpc.port 8551 \
@@ -73,6 +73,7 @@ if ! podman ps --filter "name=${CONTAINER_NAME_LIGHTHOUSE}" --filter "status=run
       -p 5054:5054/tcp \
       -p 9000:9000/tcp \
       -p 9000:9000/udp \
+      -p 9001:9001/udp \
       --name ${CONTAINER_NAME_LIGHTHOUSE} \
       --network ${NETWORK_NAME} \
       -d \
