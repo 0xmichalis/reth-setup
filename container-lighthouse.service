@@ -8,8 +8,37 @@ After=container-rootless-cni-infra.service
 Environment=PODMAN_SYSTEMD_UNIT=%n
 Restart=on-failure
 TimeoutStopSec=70
+
+# Clean up any old container instances before starting a new one
 ExecStartPre=/bin/rm -f %t/container-lighthouse.pid %t/container-lighthouse.ctr-id
-ExecStart=/usr/bin/podman run --conmon-pidfile %t/container-lighthouse.pid --cidfile %t/container-lighthouse.ctr-id --cgroups=no-conmon --replace -v lighthousedata:/root/.lighthouse -v /home/michalis/reth-scaffolding/jwttoken:/root/jwt:ro -p 5052:5052/tcp -p 5053:5053/tcp -p 5054:5054/tcp -p 9000:9000/tcp -p 9000:9000/udp -p 9001:9001/udp --name lighthouse --network ethnetwork -d sigp/lighthouse:v6.0.0 lighthouse bn --network mainnet --http --http-address 0.0.0.0 --execution-endpoint http://reth:8551 --metrics --metrics-address 0.0.0.0 --execution-jwt /root/jwt/jwt.hex --log-color --checkpoint-sync-url https://mainnet.checkpoint.sigp.io
+
+ExecStart=/usr/bin/podman run \
+           --conmon-pidfile %t/container-lighthouse.pid \
+           --cidfile %t/container-lighthouse.ctr-id \
+           --cgroups=no-conmon \
+           --replace \
+           -v lighthousedata:/root/.lighthouse \
+           -v /home/michalis/reth-scaffolding/jwttoken:/root/jwt:ro \
+           -p 5052:5052/tcp \
+           -p 5053:5053/tcp \
+           -p 5054:5054/tcp \
+           -p 9000:9000/tcp \
+           -p 9000:9000/udp \
+           -p 9001:9001/udp \
+           --name lighthouse \
+           --network ethnetwork \
+           -d sigp/lighthouse:v6.0.0 \
+           lighthouse bn \
+           --network mainnet \
+           --http \
+           --http-address 0.0.0.0 \
+           --execution-endpoint http://reth:8551 \
+           --metrics \
+           --metrics-address 0.0.0.0 \
+           --execution-jwt /root/jwt/jwt.hex \
+           --log-color \
+           --checkpoint-sync-url https://mainnet.checkpoint.sigp.io
+
 ExecStop=/usr/bin/podman stop --ignore --cidfile %t/container-lighthouse.ctr-id -t 10
 ExecStopPost=/usr/bin/podman rm --ignore -f --cidfile %t/container-lighthouse.ctr-id
 PIDFile=%t/container-lighthouse.pid

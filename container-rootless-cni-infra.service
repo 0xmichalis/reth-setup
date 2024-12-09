@@ -10,17 +10,21 @@ Restart=on-failure
 RestartSec=10                   # Delay before restarting to avoid rapid retries
 TimeoutStartSec=60              # Increased timeout to allow Podman to fully initialize
 TimeoutStopSec=70               # Timeout for stopping the container
+
+# Clean up any old container instances before starting a new one
 ExecStartPre=/bin/rm -f %t/container-rootless-cni-infra.pid %t/container-rootless-cni-infra.ctr-id
 
 # Run the container with the necessary options and explicitly define the PID file
-ExecStart=/usr/bin/podman run --conmon-pidfile %t/container-rootless-cni-infra.pid \
-                               --cidfile %t/container-rootless-cni-infra.ctr-id \
-                               --cgroups=no-conmon \
-                               --replace \
-                               --name rootless-cni-infra \
-                               --network ethnetwork \
-                               --pid=host \
-                               -d quay.io/libpod/rootless-cni-infra sleep infinity
+ExecStart=/usr/bin/podman run \
+           --conmon-pidfile %t/container-rootless-cni-infra.pid \
+           --cidfile %t/container-rootless-cni-infra.ctr-id \
+           --cgroups=no-conmon \
+           --replace \
+           --name rootless-cni-infra \
+           --network ethnetwork \
+           --pid=host \
+           -d quay.io/libpod/rootless-cni-infra \
+           sleep infinity
 
 # Stop the container gracefully and wait for 10 seconds before forcefully stopping it
 ExecStop=/usr/bin/podman stop --ignore --cidfile %t/container-rootless-cni-infra.ctr-id -t 10
