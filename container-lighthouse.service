@@ -27,7 +27,7 @@ ExecStart=/usr/bin/podman run \
            -p 9001:9001/udp \
            --name lighthouse \
            --network ethnetwork \
-           -d sigp/lighthouse:v6.0.0 \
+           -d sigp/lighthouse:v6.0.1 \
            lighthouse bn \
            --network mainnet \
            --http \
