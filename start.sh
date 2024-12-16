@@ -28,9 +28,9 @@ systemctl --user enable container-rootless-cni-infra
 systemctl --user enable container-lighthouse
 systemctl --user enable container-reth
 
-systemctl --user restart container-rootless-cni-infra
-systemctl --user restart container-lighthouse
-systemctl --user restart container-reth
+systemctl --user start container-rootless-cni-infra
+systemctl --user start container-lighthouse
+systemctl --user start container-reth
 
 # echo 'Starting Prometheus...'
 # podman run \
