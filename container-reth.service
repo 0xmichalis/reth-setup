@@ -19,7 +19,7 @@ ExecStart=/usr/bin/podman run \
            --replace \
            -v rethdata:/root/.local/share/reth/mainnet \
            -v rethlogs:/root/logs \
-           -v /home/michalis/reth-scaffolding/jwttoken:/root/jwt:ro \
+           -v /home/michalis/reth-systemd/jwttoken:/root/jwt:ro \
            -p 9011:9011 \
            -p 30303:30303 \
            -p 30303:30303/udp \
