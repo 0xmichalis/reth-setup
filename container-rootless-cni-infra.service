@@ -23,7 +23,7 @@ ExecStart=/usr/bin/podman run \
            --name rootless-cni-infra \
            --network ethnetwork \
            --pid=host \
-           -d quay.io/libpod/rootless-cni-infra \
+           -d quay.io/libpod/rootless-cni-infra:5-amd64 \
            sleep infinity
 
 # Stop the container gracefully and wait for 10 seconds before forcefully stopping it
