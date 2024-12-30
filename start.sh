@@ -1,7 +1,7 @@
 #!/bin/sh
 
-# Build the image first with `docker build -t jwt-generator ./jwt`
-docker run --rm -v jwt-volume:/app/jwttoken jwt-generator
+# Build the image first with `podman build -t jwt-generator ./jwt`
+podman run --rm -v jwt-volume:/app/jwttoken jwt-generator
 
 mkdir -p ~/.config/systemd/user
 cp container-* ~/.config/systemd/user/

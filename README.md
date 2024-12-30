@@ -4,7 +4,7 @@ Run [reth](https://reth.rs/) and [lighthouse](https://lighthouse-book.sigmaprime
 
 ## Buil JWT token generator
 
-    docker build -t jwt-generator ./jwt
+    podman build -t jwt-generator ./jwt
 
 ## Run
 
