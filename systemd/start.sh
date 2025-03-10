@@ -4,7 +4,7 @@
 podman run --rm -v jwt-volume:/app/jwttoken jwt-generator
 
 mkdir -p ~/.config/systemd/user
-cp container-* ~/.config/systemd/user/
+cp systemd/container-* ~/.config/systemd/user/
 
 systemctl --user daemon-reload
 
