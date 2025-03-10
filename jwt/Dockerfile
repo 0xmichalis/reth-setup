@@ -16,8 +16,5 @@ COPY generate-jwt.sh /app/generate-jwt.sh
 # Make the script executable
 RUN chmod +x /app/generate-jwt.sh
 
-# Define the JWT directory as a volume
-VOLUME /app/jwttoken
-
 # Run the script when the container starts
 CMD ["/app/generate-jwt.sh"]

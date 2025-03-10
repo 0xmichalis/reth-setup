@@ -3,6 +3,8 @@
 # Build the image first with `podman build -t jwt-generator ./jwt`
 podman run --rm -v jwt-volume:/app/jwttoken jwt-generator
 
+podman network create ethnetwork || true
+
 mkdir -p ~/.config/systemd/user
 cp systemd/container-* ~/.config/systemd/user/
 

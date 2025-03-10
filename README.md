@@ -1,17 +1,29 @@
-# reth-systemd
+# reth-setup
 
-Run [reth](https://reth.rs/) and [lighthouse](https://lighthouse-book.sigmaprime.io/) via Podman and systemd.
+Run [reth](https://reth.rs/) and [lighthouse](https://lighthouse-book.sigmaprime.io/) via Podman.
 
 ## Buil JWT token generator
 
-    podman build -t jwt-generator ./jwt
+	podman build -t jwt-generator ./jwt
 
 ## Run
 
+### systemd
+
 Start:
 
-    ./start.sh
+	./systemd/start.sh
 
 Stop:
 
-    ./stop.sh
+	./systemd/stop.sh
+
+### podman-compose
+
+Start:
+
+	./podman-compose/start.sh
+
+Stop:
+
+	./podman-compose/stop.sh
