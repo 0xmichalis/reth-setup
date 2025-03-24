@@ -28,7 +28,7 @@ ExecStart=/usr/bin/podman run \
            --pid=host \
            --name reth \
            --network ethnetwork \
-           -d ghcr.io/paradigmxyz/reth:v1.1.5 node \
+           -d ghcr.io/paradigmxyz/reth:v1.3.4 node \
            --full \
            --chain=mainnet \
            --metrics 0.0.0.0:9011 \
