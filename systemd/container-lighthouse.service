@@ -27,7 +27,7 @@ ExecStart=/usr/bin/podman run \
            -p 9001:9001/udp \
            --name lighthouse \
            --network ethnetwork \
-           -d docker.io/sigp/lighthouse:v6.0.1 \
+           -d docker.io/sigp/lighthouse:v7.0.0 \
            lighthouse bn \
            --network mainnet \
            --http \

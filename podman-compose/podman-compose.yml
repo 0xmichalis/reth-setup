@@ -38,7 +38,7 @@ services:
       --http --http.addr 0.0.0.0 --http.port 8545 --http.api eth,net,web3
 
   lighthouse:
-    image: docker.io/sigp/lighthouse:v6.0.1
+    image: docker.io/sigp/lighthouse:v7.0.0
     container_name: lighthouse
     restart: unless-stopped
     depends_on:
