@@ -8,16 +8,6 @@ Run [reth](https://reth.rs/) and [lighthouse](https://lighthouse-book.sigmaprime
 
 ## Run
 
-### systemd
-
-Start:
-
-	./systemd/start.sh
-
-Stop:
-
-	./systemd/stop.sh
-
 ### podman-compose
 
 Start:
@@ -27,3 +17,16 @@ Start:
 Stop:
 
 	./podman-compose/stop.sh
+
+
+### systemd
+
+> **⚠️ Warning:** The `systemd` setup is **not actively maintained or used**. It may be outdated or not work as expected. Happy to merge contributions to it!
+
+Start:
+
+	./systemd/start.sh
+
+Stop:
+
+	./systemd/stop.sh
