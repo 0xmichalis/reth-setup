@@ -14,7 +14,7 @@ services:
     command: sleep infinity
 
   reth:
-    image: ghcr.io/paradigmxyz/reth:v1.3.4
+    image: ghcr.io/paradigmxyz/reth:v1.3.12
     container_name: reth
     restart: unless-stopped
     depends_on:
